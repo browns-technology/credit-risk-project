@@ -1,4 +1,5 @@
-streamlit>=1.0
-pandas>=1.0
-scikit-learn>=1.0
-joblib>=1.0
+joblib
+scikit-learn
+pandas
+skl2onnx
+onnx
