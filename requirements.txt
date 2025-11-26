@@ -1,5 +1,17 @@
+# Core ML/runtime
 joblib
-scikit-learn
+scikit-learn==1.6.1
 pandas
+
+# Web / app frameworks
+fastapi
+uvicorn[standard]
+streamlit
+
+# Optional: ONNX conversion (install only if you intend to convert models)
 skl2onnx
 onnx
+
+# Model dependencies
+# The trained pipeline includes an XGBoost estimator — required for unpickling.
+xgboost==3.1.2

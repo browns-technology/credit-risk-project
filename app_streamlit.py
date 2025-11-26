@@ -16,6 +16,24 @@ except ModuleNotFoundError:
 # Resolve model path relative to this file to avoid FileNotFoundError when working dir differs
 MODEL_PATH = Path(__file__).resolve().parent / "models" / "credit_risk_pipeline.joblib"
 
+# app_streamlit.py
+import streamlit as st
+import pandas as pd
+from pathlib import Path
+
+# Import joblib with a friendly error if it's missing
+try:
+    import joblib
+except ModuleNotFoundError:
+    st.error(
+        "Missing dependency: 'joblib' is not installed in this environment. "
+        "Install it by adding 'joblib' to requirements.txt or running 'pip install joblib'."
+    )
+    st.stop()
+
+# Resolve model path relative to this file to avoid FileNotFoundError when working dir differs
+MODEL_PATH = Path(__file__).resolve().parent / "models" / "credit_risk_pipeline.joblib"
+
 st.title("Credit Risk - Demo")
 st.write("Enter applicant info and get a predicted probability of 'bad credit'")
 

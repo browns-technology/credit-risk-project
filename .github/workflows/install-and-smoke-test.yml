@@ -21,4 +21,4 @@ jobs:
 
       - name: Smoke test: attempt to load model if present
         run: |
-          if [ -f /mount/src/credit-risk-project/models/credit_risk_pipeline.joblib ]; then python load_model_with_shim.py; else echo "Model file not present, skipping load_model_with_shim.py"; fi
+          if [ -f models/credit_risk_pipeline.joblib ]; then python load_model_with_shim.py; else echo "Model file not present, skipping load_model_with_shim.py"; fi
