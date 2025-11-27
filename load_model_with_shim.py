@@ -4,7 +4,7 @@ import joblib
 import sys
 from pathlib import Path
 
-MODEL_PATH = "/mount/src/credit-risk-project/models/credit_risk_pipeline.joblib"
+MODEL_PATH = Path(__file__).resolve().parent / "models" / "credit_risk_pipeline.joblib"
 
 def ensure_remainder_shim():
     try:
@@ -30,12 +30,14 @@ def load_model(path):
         print("AttributeError on first load attempt:", e)
         print("Attempting to install shim and retry...")
         ensure_remainder_shim()
+        # Try again after installing shim
         return joblib.load(path)
 
 if __name__ == "__main__":
     p = Path(MODEL_PATH)
     if not p.exists():
-        print(f"Model not found at {MODEL_PATH}", file=sys.stderr)
+        print(f"Model not found at {p}", file=sys.stderr)
+        print("Expected the model at the repository-relative path 'models/credit_risk_pipeline.joblib'", file=sys.stderr)
         sys.exit(2)
     try:
         model = load_model(str(p))

@@ -1,0 +1,14 @@
+.venv
+.venv-1/
+_pycache__/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.swp
+*.swo
+*.egg-info/
+.eggs/
+dist/
+build/
+*.egg.venv/
