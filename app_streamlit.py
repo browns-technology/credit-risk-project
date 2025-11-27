@@ -100,7 +100,40 @@ components.html(
     height=240
 )
 
-st.write("Enter applicant info and get a predicted probability of 'bad credit'")
+import streamlit.components.v1 as components
+
+components.html(
+    """
+    <style>
+    .animated-text {
+        position: relative;
+        display: inline-block;
+        font-size: 18px;
+        color: white;
+    }
+    .animated-text::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: -4px;
+        height: 2px;
+        width: 0;
+        background: purple;
+        animation: underline 3s linear infinite;
+    }
+    @keyframes underline {
+        0%   { width: 0; }
+        50%  { width: 100%; }
+        100% { width: 0; }
+    }
+    </style>
+
+    <div class="animated-text">
+        Enter applicant info and get a predicted probability of 'bad credit'
+    </div>
+    """,
+    height=60
+)
 
 # Load model
 try:
@@ -178,6 +211,7 @@ if st.button("Predict"):
     except Exception as e:
         st.exception(e)
         st.error("Prediction failed. Check the input data above and confirm the model's expected feature names and categories.")
+
 
 
 
