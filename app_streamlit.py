@@ -22,29 +22,39 @@ import streamlit.components.v1 as components
 components.html(
     """
     <style>
-    .gear-container {
+    .gear-wrapper {
         position: relative;
-        height: 180px;
+        height: 200px;
         margin-bottom: 20px;
-        text-align: center;
+        overflow: visible;
     }
     .gear {
         width: 100px;
         height: 100px;
         position: absolute;
-        top: 20px;
-        animation: spin 10s linear infinite;
+        top: 50px;
         stroke: purple;
         stroke-width: 3;
-        fill: transparent;
-        opacity: 0.3;
-    }
-    .gear.right {
-        right: 30%;
-        animation-direction: reverse;
+        fill: gray;
+        opacity: 0.5;
+        animation: spin 10s linear infinite;
     }
     .gear.left {
-        left: 30%;
+        left: 25%;
+    }
+    .gear.right {
+        right: 25%;
+        animation-direction: reverse;
+    }
+    .title-overlay {
+        position: absolute;
+        top: 0;
+        width: 100%;
+        text-align: center;
+        font-size: 32px;
+        font-weight: bold;
+        color: white;
+        z-index: 2;
     }
     @keyframes spin {
         from { transform: rotate(0deg); }
@@ -52,8 +62,9 @@ components.html(
     }
     </style>
 
-    <div class="gear-container">
-        <!-- Left gear -->
+    <div class="gear-wrapper">
+        <div class="title-overlay">Credit Risk – Demo</div>
+
         <svg class="gear left" viewBox="0 0 512 512">
             <path d="M487.4 315.7l-42.9-24.8c2.9-15.6 4.4-31.7 
             4.4-48s-1.5-32.4-4.4-48l42.9-24.8c7.6-4.4 
@@ -69,7 +80,6 @@ components.html(
             80-80 80 35.8 80 80-35.8 80-80 80z"/>
         </svg>
 
-        <!-- Right gear -->
         <svg class="gear right" viewBox="0 0 512 512">
             <path d="M487.4 315.7l-42.9-24.8c2.9-15.6 4.4-31.7 
             4.4-48s-1.5-32.4-4.4-48l42.9-24.8c7.6-4.4 
@@ -85,8 +95,6 @@ components.html(
             80-80 80 35.8 80 80-35.8 80-80 80z"/>
         </svg>
     </div>
-
-    <h1 style="text-align:center; position: relative; z-index: 2;">Credit Risk - Demo</h1>
     """,
     height=220
 )
@@ -169,6 +177,7 @@ if st.button("Predict"):
     except Exception as e:
         st.exception(e)
         st.error("Prediction failed. Check the input data above and confirm the model's expected feature names and categories.")
+
 
 
 
