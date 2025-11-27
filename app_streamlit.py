@@ -17,9 +17,53 @@ except ModuleNotFoundError:
 MODEL_PATH = Path(__file__).resolve().parent / "models" / "credit_risk_pipeline.joblib"
 
 # Animated gears + title
-st.markdown(
-    "<h1 style='color: purple; text-align:center;'>Hello World with HTML</h1>",
-    unsafe_allow_html=True
+import streamlit.components.v1 as components
+
+components.html(
+    """
+    <style>
+    .gear-container {
+        position: relative;
+        height: 160px;
+        margin-bottom: 20px;
+        text-align: center;
+    }
+    .gear {
+        width: 100px;
+        height: 100px;
+        position: absolute;
+        top: 20px;
+        animation: spin 10s linear infinite;
+        stroke: purple;
+        stroke-width: 3;
+        fill: transparent;
+        opacity: 0.3;
+    }
+    .gear.right {
+        right: 30%;
+        animation-direction: reverse;
+    }
+    .gear.left {
+        left: 30%;
+    }
+    @keyframes spin {
+        from { transform: rotate(0deg); }
+        to { transform: rotate(360deg); }
+    }
+    </style>
+
+    <div class="gear-container">
+        <svg class="gear left" viewBox="0 0 512 512">
+            <path d="M487.4 315.7l-42.9-24.8c2.9-15.6..."/>
+        </svg>
+        <svg class="gear right" viewBox="0 0 512 512">
+            <path d="M487.4 315.7l-42.9-24.8c2.9-15.6..."/>
+        </svg>
+    </div>
+
+    <h1 style="text-align:center; position: relative; z-index: 2;">Credit Risk - Demo</h1>
+    """,
+    height=200
 )
 
 st.write("Enter applicant info and get a predicted probability of 'bad credit'")
@@ -100,6 +144,7 @@ if st.button("Predict"):
     except Exception as e:
         st.exception(e)
         st.error("Prediction failed. Check the input data above and confirm the model's expected feature names and categories.")
+
 
 
 
