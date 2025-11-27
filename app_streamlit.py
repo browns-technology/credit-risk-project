@@ -17,7 +17,8 @@ except ModuleNotFoundError:
 MODEL_PATH = Path(__file__).resolve().parent / "models" / "credit_risk_pipeline.joblib"
 
 # Animated gears + title
-st.markdown("""
+st.markdown(
+    """
     <style>
     .gear-container {
         position: relative;
@@ -62,7 +63,9 @@ st.markdown("""
     </div>
 
     <h1 style="text-align:center; position: relative; z-index: 2;">Credit Risk - Demo</h1>
-""", unsafe_allow_html=True)
+    """,
+    unsafe_allow_html=True
+)
 
 st.write("Enter applicant info and get a predicted probability of 'bad credit'")
 
@@ -142,4 +145,5 @@ if st.button("Predict"):
     except Exception as e:
         st.exception(e)
         st.error("Prediction failed. Check the input data above and confirm the model's expected feature names and categories.")
+
 
