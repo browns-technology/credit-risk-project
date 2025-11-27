@@ -17,50 +17,10 @@ except ModuleNotFoundError:
 MODEL_PATH = Path(__file__).resolve().parent / "models" / "credit_risk_pipeline.joblib"
 
 # Animated gears + title
-st.markdown("""
-<style>
-.gear-container {
-    position: relative;
-    height: 160px;
-    margin-bottom: 20px;
-    text-align: center;
-}
-.gear {
-    width: 100px;
-    height: 100px;
-    position: absolute;
-    top: 20px;
-    animation: spin 10s linear infinite;
-    stroke: purple;
-    stroke-width: 3;
-    fill: transparent;
-    opacity: 0.3;
-}
-.gear.right {
-    right: 30%;
-    animation-direction: reverse;
-}
-.gear.left {
-    left: 30%;
-}
-@keyframes spin {
-    from { transform: rotate(0deg); }
-    to { transform: rotate(360deg); }
-}
-</style>
-
-<div class="gear-container">
-    <svg class="gear left" viewBox="0 0 512 512">
-        <path d="M487.4 315.7l-42.9-24.8c2.9-15.6 4.4-31.7 4.4-48s-1.5-32.4-4.4-48l42.9-24.8c7.6-4.4 10.3-14.1 6-21.7l-43.6-75.5c-4.4-7.6-14.1-10.3-21.7-6l-42.9 24.8c-25.1-21.7-54.5-38.6-86.6-49.1V24c0-8.8-7.2-16-16-16h-87.2c-8.8 0-16 7.2-16 16v49.6c-32.1 10.5-61.5 27.4-86.6 49.1l-42.9-24.8c-7.6-4.4-17.3-1.6-21.7 6L18.6 149.4c-4.4 7.6-1.6 17.3 6 21.7l42.9 24.8c-2.9 15.6-4.4 31.7-4.4 48s1.5 32.4 4.4 48l-42.9 24.8c-7.6 4.4-10.3 14.1-6 21.7l43.6 75.5c4.4 7.6 14.1 10.3 21.7 6l42.9-24.8c25.1 21.7 54.5 38.6 86.6 49.1V488c0 8.8 7.2 16 16 16h87.2c8.8 0 16-7.2 16-16v-49.6c32.1-10.5 61.5-27.4 86.6-49.1l42.9 24.8c7.6 4.4 17.3 1.6 21.7-6l43.6-75.5c4.4-7.6 1.6-17.3-6-21.7zM256 336c-44.2 0-80-35.8-80-80s35.8-80 80-80 80 35.8 80 80-35.8 80-80 80z"/>
-    </svg>
-
-    <svg class="gear right" viewBox="0 0 512 512">
-        <path d="M487.4 315.7l-42.9-24.8c2.9-15.6 4.4-31.7 4.4-48s-1.5-32.4-4.4-48l42.9-24.8c7.6-4.4 10.3-14.1 6-21.7l-43.6-75.5c-4.4-7.6-14.1-10.3-21.7-6l-42.9 24.8c-25.1-21.7-54.5-38.6-86.6-49.1V24c0-8.8-7.2-16-16-16h-87.2c-8.8 0-16 7.2-16 16v49.6c-32.1 10.5-61.5 27.4-86.6 49.1l-42.9-24.8c-7.6-4.4-17.3-1.6-21.7 6L18.6 149.4c-4.4 7.6-1.6 17.3 6 21.7l42.9 24.8c-2.9 15.6-4.4 31.7-4.4 48s1.5 32.4 4.4 48l-42.9 24.8c-7.6 4.4-10.3 14.1-6 21.7l43.6 75.5c4.4 7.6 14.1 10.3 21.7 6l42.9-24.8c25.1 21.7 54.5 38.6 86.6 49.1V488c0 8.8 7.2 16 16 16h87.2c8.8 0 16-7.2 16-16v-49.6c32.1-10.5 61.5-27.4 86.6-49.1l42.9 24.8c7.6 4.4 17.3 1.6 21.7-6l43.6-75.5c4.4-7.6 1.6-17.3-6-21.7zM256 336c-44.2 0-80-35.8-80-80s35.8-80 80-80 80 35.8 80 80-35.8 80-80 80z"/>
-    </svg>
-</div>
-
-<h1 style="text-align:center; position: relative; z-index: 2;">Credit Risk - Demo</h1>
-""", unsafe_allow_html=True)
+st.markdown(
+    "<h1 style='color: purple; text-align:center;'>Hello World with HTML</h1>",
+    unsafe_allow_html=True
+)
 
 st.write("Enter applicant info and get a predicted probability of 'bad credit'")
 
@@ -140,6 +100,7 @@ if st.button("Predict"):
     except Exception as e:
         st.exception(e)
         st.error("Prediction failed. Check the input data above and confirm the model's expected feature names and categories.")
+
 
 
 
